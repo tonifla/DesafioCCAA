@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Projeto.BLL",
+    "\\Projeto.DAL",
+    "\\Projeto.Entities"
   ],
+  "SelectedNode": "\\Projeto.DAL\\CategoriaRepository.cs",
   "PreviewInSolutionExplorer": false
 }
