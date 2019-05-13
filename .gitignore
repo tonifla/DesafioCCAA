@@ -1,0 +1,12 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/Projeto.BLL/bin
+/Projeto.DAL/bin
+/Projeto.BLL/obj
+*.dll
+*.pdb
+/Projeto.DAL/obj
+*.cache

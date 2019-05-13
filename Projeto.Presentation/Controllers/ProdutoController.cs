@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Projeto.Entities;
 using Projeto.BLL;
 using Projeto.Presentation.Models;
+using AutoMapper;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -32,14 +33,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Produto produto = new Produto();
-                    produto.Nome = model.Nome;
-                    produto.Descricao = model.Descricao;
-                    produto.DataValidade = model.DataValidade;
-                    produto.DataFabricacao = model.DataFabricacao;
-                    produto.Preco = model.Preco;
-                    produto.IdCategoria = model.IdCategoria;
-                    produto.IdFornecedor = model.IdFornecedor;
+                    Produto produto = Mapper.Map<Produto>(model);
 
                     business.CadastrarProduto(produto);
 
@@ -61,20 +55,7 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                foreach (Produto produto in business.ConsultarProdutos())
-                {
-                    ProdutoConsultaViewModel model = new ProdutoConsultaViewModel();
-                    model.IdProduto = produto.IdProduto;
-                    model.Nome = produto.Nome;
-                    model.Descricao = produto.Descricao;
-                    model.DataValidade = produto.DataValidade;
-                    model.DataFabricacao = produto.DataFabricacao;
-                    model.Preco = produto.Preco;
-                    model.IdCategoria = produto.IdCategoria;
-                    model.IdFornecedor = produto.IdFornecedor;
-
-                    lista.Add(model);
-                }
+                lista = Mapper.Map<List<ProdutoConsultaViewModel>>(business.ConsultarProdutos());
             }
             catch (Exception e)
             {
@@ -90,16 +71,7 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                Produto produto = business.ConsultarProdutoPorId(id);
-
-                model.IdProduto = produto.IdProduto;
-                model.Nome = produto.Nome;
-                model.Descricao = produto.Descricao;
-                model.DataValidade = produto.DataValidade;
-                model.DataFabricacao = produto.DataFabricacao;
-                model.Preco = produto.Preco;
-                model.IdCategoria = produto.IdCategoria;
-                model.IdFornecedor = produto.IdFornecedor;
+                model = Mapper.Map<ProdutoEdicaoViewModel>(business.ConsultarProdutoPorId(id));
             }
             catch (Exception e)
             {
@@ -116,15 +88,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Produto produto = new Produto();
-                    produto.IdProduto = model.IdProduto;
-                    produto.Nome = model.Nome;
-                    produto.Descricao = model.Descricao;
-                    produto.DataValidade = model.DataValidade;
-                    produto.DataFabricacao = model.DataFabricacao;
-                    produto.Preco = model.Preco;
-                    produto.IdCategoria = model.IdCategoria;
-                    produto.IdFornecedor = model.IdFornecedor;
+                    Produto produto = Mapper.Map<Produto>(model);
 
                     business.AtualizarProduto(produto);
 

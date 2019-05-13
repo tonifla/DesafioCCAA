@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Projeto.Entities;
 using Projeto.BLL;
 using Projeto.Presentation.Models;
+using AutoMapper;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -31,11 +32,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Fornecedor fornecedor = new Fornecedor();
-                    fornecedor.Nome = model.Nome;
-                    fornecedor.Email = model.Email;
-                    fornecedor.Telefone = model.Telefone;
-                    fornecedor.Cnpj = model.Cnpj;
+                    Fornecedor fornecedor = Mapper.Map<Fornecedor>(model);
 
                     business.CadastrarFornecedor(fornecedor);
 
@@ -57,19 +54,7 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                    foreach (Fornecedor fornecedor in business.ConsultarFornecedor())
-                    {
-                        FornecedorConsultaViewModel model = new FornecedorConsultaViewModel();
-                        model.IdFornecedor = fornecedor.IdFornecedor;
-                        model.Nome = fornecedor.Nome;
-                        model.Email = fornecedor.Email;
-                        model.Telefone = fornecedor.Telefone;
-                        model.Cnpj = fornecedor.Cnpj;
-                        model.QuantidadeDeFornecedores = business.ObterSomaDeQuantidadeDeProdutos(fornecedor.IdFornecedor);
-
-                        lista.Add(model);
-                    }
-
+                lista = Mapper.Map<List<FornecedorConsultaViewModel>>(business.ConsultarFornecedor());
             }
             catch (Exception e)
             {
@@ -85,13 +70,7 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                Fornecedor fornecedor = business.ConsultarFornecedorPorId(id);
-
-                model.IdFornecedor = fornecedor.IdFornecedor;
-                model.Nome = fornecedor.Nome;
-                model.Email = fornecedor.Email;
-                model.Telefone = fornecedor.Telefone;
-                model.Cnpj = fornecedor.Cnpj;
+                model = Mapper.Map<FornecedorEdicaoViewModel>(business.ConsultarFornecedorPorId(id));
             }
             catch (Exception e)
             {
@@ -108,12 +87,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Fornecedor fornecedor = new Fornecedor();
-                    fornecedor.IdFornecedor = model.IdFornecedor;
-                    fornecedor.Nome = model.Nome;
-                    fornecedor.Email = model.Email;
-                    fornecedor.Telefone = model.Telefone;
-                    fornecedor.Cnpj = model.Cnpj;
+                    Fornecedor fornecedor = Mapper.Map<Fornecedor>(model);
 
                     business.AtualizarFornecedor(fornecedor);
 

@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -164,6 +167,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\EntityToViewModelMap.cs" />
+    <Compile Include="Mappings\ViewModelToEntityMap.cs" />
     <Compile Include="Models\CategoriaCadastroViewModel.cs" />
     <Compile Include="Models\CategoriaConsultaViewModel.cs" />
     <Compile Include="Models\CategoriaEdicaoViewModel.cs" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Projeto.Entities;
 using Projeto.BLL;
 using Projeto.Presentation.Models;
+using AutoMapper;
 
 namespace Projeto.Presentation.Controllers
 {
@@ -31,8 +32,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Categoria categoria = new Categoria();
-                    categoria.Nome = model.Nome;
+                    Categoria categoria = Mapper.Map<Categoria>(model);
 
                     business.CadastrarCategoria(categoria);
 
@@ -54,17 +54,9 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                foreach(Categoria categoria in business.ConsultarCategoria())
-                {
-                        CategoriaConsultaViewModel model = new CategoriaConsultaViewModel();
-                        model.IdCategoria = categoria.IdCategoria;
-                        model.Nome = categoria.Nome;
-                        model.QuantidadeDeCategorias = business.ObterSomaDeQuantidadeDeProdutos(categoria.IdCategoria);
-
-                        lista.Add(model);
-                }
+                lista = Mapper.Map<List<CategoriaConsultaViewModel>>(business.ConsultarCategoria());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 TempData["Mensagem"] = e.Message;
             }
@@ -78,10 +70,7 @@ namespace Projeto.Presentation.Controllers
 
             try
             {
-                Categoria categoria = business.ConsultarCategoriaPorId(id);
-
-                model.IdCategoria = categoria.IdCategoria;
-                model.Nome = categoria.Nome;
+                model = Mapper.Map<CategoriaEdicaoViewModel>(business.ConsultarCategoriaPorId(id));
             }
             catch (Exception e)
             {
@@ -98,9 +87,7 @@ namespace Projeto.Presentation.Controllers
             {
                 try
                 {
-                    Categoria categoria = new Categoria();
-                    categoria.IdCategoria = model.IdCategoria;
-                    categoria.Nome = model.Nome;
+                    Categoria categoria = Mapper.Map<Categoria>(model);
 
                     business.AtualizarCategoria(categoria);
 
