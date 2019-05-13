@@ -1,0 +1,6 @@
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\bin\Debug\Projeto.Entities.dll
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\bin\Debug\Projeto.Entities.pdb
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\obj\Debug\Projeto.Entities.csprojAssemblyReference.cache
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\obj\Debug\Projeto.Entities.csproj.CoreCompileInputs.cache
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\obj\Debug\Projeto.Entities.dll
+D:\Toni\Coti\Exercicios\DesafioCCAA\Projeto.Entities\obj\Debug\Projeto.Entities.pdb
