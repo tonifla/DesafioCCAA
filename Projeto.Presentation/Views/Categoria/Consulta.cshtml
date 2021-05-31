@@ -1,0 +1,49 @@
+﻿@model List<Projeto.Presentation.Models.CategoriaConsultaViewModel>
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h4>Consulta de categoria</h4>
+<hr />
+
+<div>
+    <strong>@TempData["Mensagem"]</strong>
+    <br />
+    <br />
+</div>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th class="bg-info text-white">Código</th>
+            <th class="bg-info text-white">Nome</th>
+            <th class="bg-info text-white">Operações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdCategoria</td>
+                <td>@item.Nome</td>
+                <td>
+                    <a href="/Categoria/Edicao/@item.IdCategoria"
+                       class="btn btn-primary btn-sm">
+                        Atualizar
+                    </a>
+                    <a href="/Categoria/Exclusao/@item.IdCategoria"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Deseja excluir esta categoria?');">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Quantidade de categoria: @Model.Count</td>
+        </tr>
+    </tfoot>
+</table>

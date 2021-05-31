@@ -1,0 +1,70 @@
+﻿@model Projeto.Presentation.Models.FornecedorEdicaoViewModel
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h4>Atualização de dados dos fornecedores</h4>
+<hr />
+<div class="row">
+    <div class="col-4">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.IdFornecedor)
+
+            <label>Nome do fornecedor:</label>
+            @Html.TextBoxFor(model => model.Nome,
+           new
+                {
+                    @class = "form-control",
+                 @placeholder = "Digite aqui"
+                })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Nome)
+            </span>
+            <br />
+
+            <label>Email do fornecedor:</label>
+            @Html.TextBoxFor(model => model.Email,
+           new
+                {
+                    @class = "form-control",
+                 @placeholder = "Digite aqui"
+                })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Email)
+            </span>
+            <br />
+
+            <label>Telefone do fornecedor:</label>
+            @Html.TextBoxFor(model => model.Telefone,
+           new
+                {
+                    @class = "form-control",
+                 @placeholder = "Digite aqui"
+                })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Telefone)
+            </span>
+            <br />
+
+            <label>CNPJ do fornecedor:</label>
+            @Html.TextBoxFor(model => model.Cnpj,
+           new
+                {
+                    @class = "form-control",
+                 @placeholder = "Digite aqui"
+                })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.Cnpj)
+            </span>
+            <br />
+
+            <input type="submit" value="Editar Fornecedor" class="btn btn-primary" />
+            <br />
+            <br />
+
+            <strong>@TempData["Mensagem"]</strong>
+        }
+    </div>
+</div>
